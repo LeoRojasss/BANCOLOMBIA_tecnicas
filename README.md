@@ -82,4 +82,28 @@ FROM
     join_obligaciones_productos
 GROUP BY 
     num_documento;       -- Agrupa por cliente
+```
 
+# Análisis de Obligaciones y Tasas PYTHON
+
+El proyecto se divide en los siguientes pasos principales:
+
+1. **Cargar archivos de datos**: Se cargan dos archivos XLSX: `obligaciones_clientes.xlsx` y `tasas_productos.xlsx`, que contienen la información de las obligaciones de los clientes y las tasas correspondientes para cada tipo de producto.
+   
+2. **Procesamiento de la columna `id_producto`**: Se extrae el nombre del producto desde el campo `id_producto` para facilitar el mapeo con la tabla de tasas.
+
+3. **Asignación de tasas**: Las tasas de interés se asignan a cada producto utilizando una función de mapeo.
+
+4. **Cálculo de tasa efectiva**: La tasa nominal se convierte en una tasa efectiva usando la fórmula planteada
+
+   Donde \( t \) es la tasa nominal y \( n \) depende de la periodicidad del pago.
+
+5. **Cálculo del valor final**: Se multiplica la tasa efectiva por el valor inicial de cada obligación para obtener el valor final.
+
+6. **Sumar el valor final por cliente**: Finalmente, se suma el valor final de todas las obligaciones por cliente, agrupando por el número de documento del cliente (`num_documento`).
+
+## Archivos
+
+- `obligaciones_clientes.xlsx`: Contiene la información de las obligaciones de los clientes.
+- `tasas_productos.xlsx`: Contiene la tasa de interés correspondiente a cada tipo de producto.
+- `resultado_obligaciones.xlsx`: Archivo generado con los valores finales calculados para cada cliente.
