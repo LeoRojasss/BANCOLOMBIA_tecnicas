@@ -1,4 +1,4 @@
-# Análisis de Obligaciones y Tasas
+# Análisis de Obligaciones y Tasas SQL
 
 ## Introducción
 
